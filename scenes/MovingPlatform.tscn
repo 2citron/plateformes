@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Movable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/MovingPlatform.gd" type="Script" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 2.11893, 72.0435, -2.11893, -72.0435, 64, 0, -108.065, 2.11893, 108.065, -2.11893, 256, -192, 4.23785, -86.876, -4.23785, 86.876, 448, 0, 177.99, 14.8325, -177.99, -14.8325, 256, 192, 0, 0, 0, 0, 64, 0 )
+}
+
+[node name="moving_platform" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2( -64, 0 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2( 64, 0 )
+rotation = -1.57675
+rotate = false
+
+[node name="Movable" parent="Path2D/PathFollow2D" instance=ExtResource( 1 )]
+rotation = 1.5708
